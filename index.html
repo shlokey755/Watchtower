@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Watchtower</title>
+  <style>
+    html, body { margin: 0; height: 100%; overflow: hidden; background: #111; color: #fff;
+      font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 13px; }
+    #bg { position: fixed; inset: 0; width: 100%; height: 100%; display: block; }
+
+    #loader { position: fixed; inset: 0; background: #111; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 14px; z-index: 10;
+      transition: opacity 1s ease, visibility 1s; }
+    #loader.done { opacity: 0; visibility: hidden; }
+    #track { width: 200px; height: 1px; background: rgba(255,255,255,.25); }
+    #bar { width: 0; height: 100%; background: #fff; transition: width .2s; }
+
+    #info { position: fixed; left: 32px; bottom: 90px; max-width: 320px; pointer-events: none;
+      transition: opacity .35s ease, transform .35s ease; }
+    #info.swap { opacity: 0; transform: translateY(8px); }
+    #count { opacity: .5; margin-bottom: 8px; }
+    #title { margin: 0 0 6px; font-size: 26px; font-weight: 400; letter-spacing: .02em; }
+    #desc { margin: 0; opacity: .7; line-height: 1.5; }
+
+    #nav { position: fixed; left: 50%; bottom: 28px; transform: translate(-50%, 20px); display: flex;
+      gap: 8px; opacity: 0; transition: opacity 1s ease 1.5s, transform 1s ease 1.5s; flex-wrap: wrap;
+      justify-content: center; }
+    #nav.show { opacity: 1; transform: translate(-50%, 0); }
+    button { font: inherit; color: #fff; background: transparent; border: 1px solid rgba(255,255,255,.35);
+      padding: 7px 14px; cursor: pointer; transition: background .2s, color .2s, border-color .2s; }
+    button:hover { border-color: #fff; }
+    button.on { background: #fff; color: #111; border-color: #fff; }
+
+    #hud { position: fixed; top: 20px; right: 24px; text-align: right; opacity: .5; line-height: 1.7;
+      display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+    #free { padding: 4px 10px; }
+  </style>
+</head>
+<body>
+  <canvas id="bg"></canvas>
+
+  <div id="loader">
+    <div id="pct">0%</div>
+    <div id="track"><div id="bar"></div></div>
+  </div>
+
+  <div id="info">
+    <div id="count"></div>
+    <h1 id="title"></h1>
+    <p id="desc"></p>
+  </div>
+
+  <div id="nav"></div>
+
+  <div id="hud">
+    <button id="free">free: off</button>
+    <div>scroll / 1-4 / arrows: sections<br />drag: orbit &middot; click model: focus<br />esc: reset &middot; f: free zoom</div>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
