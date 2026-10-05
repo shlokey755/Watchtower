@@ -27,6 +27,7 @@
       gap: 8px; opacity: 0; transition: opacity 1s ease 1.5s, transform 1s ease 1.5s; flex-wrap: wrap;
       justify-content: center; }
     #nav.show { opacity: 1; transform: translate(-50%, 0); }
+    
     button { font: inherit; color: #fff; background: transparent; border: 1px solid rgba(255,255,255,.35);
       padding: 7px 14px; cursor: pointer; transition: background .2s, color .2s, border-color .2s; }
     button:hover { border-color: #fff; }
@@ -35,6 +36,14 @@
     #hud { position: fixed; top: 20px; right: 24px; text-align: right; opacity: .5; line-height: 1.7;
       display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
     #free { padding: 4px 10px; }
+
+    /* Mobile-only adjustments (desktop remains 100% untouched) */
+    @media (max-width: 768px) {
+      #info { left: 20px; right: 20px; max-width: none; bottom: 125px; }
+      #title { font-size: 22px; }
+      #nav { max-width: 92vw; width: 100%; box-sizing: border-box; padding: 0 10px; bottom: 16px; }
+      #nav button { flex: 1 1 40%; padding: 8px 10px; font-size: 12px; white-space: nowrap; }
+    }
   </style>
 </head>
 <body>
